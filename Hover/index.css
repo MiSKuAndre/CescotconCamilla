@@ -6,3 +6,19 @@ div {
     background-color: yellow;
     color: red;
 }
+
+h1:hover {
+    color: white;
+    background-color: red;
+}
+
+.dispari:hover {
+    background-color: blue;
+    color: yellow;
+}
+
+.pari:hover {
+    background-color: red;
+    color: yellow;
+}
+
