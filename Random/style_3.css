@@ -3,3 +3,17 @@ h1 {
     color: black;
 }
 
+.pari {
+    background-color: blue;
+    color: yellow;
+}
+
+.dispari {
+    background-color: yellow;
+    color: blue;
+}
+
+.footer {
+    background-color: green;
+    color: black;
+}
