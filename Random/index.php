@@ -1,6 +1,8 @@
 <html>
 <head>
-    <link rel="stylesheet" href="page.css">
+    <link rel="stylesheet" href="style_1.css">
+    <link rel="stylesheet" href="style_2.css">
+    <link rel="stylesheet" href="style_3.css">
 <h1>css casuali</h1>
 </head>
 <body>
