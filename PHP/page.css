@@ -6,9 +6,13 @@ h1 {
 div {
     background-color: blue;
     color: white;
+    padding: 10px;
+    margin-top: 100;
 }
 
 .footer {
     background-color: black;
-    color: white
+    color: white;
+    padding: 10px;
+    margin-top: 100;
 }
