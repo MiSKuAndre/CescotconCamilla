@@ -1,3 +1,4 @@
+<html>
 <head>
     <link rel="stylesheet" href="page.css">
 <h1>pagina di prova</h1>
@@ -20,3 +21,4 @@
 <div>questo è il div numero 15</div>
 <div class="footer">questo è la fine della pagina</div>
 </body>
+</html>
