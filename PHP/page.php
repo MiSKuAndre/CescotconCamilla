@@ -19,6 +19,6 @@
 <div>questo è il div numero 13</div>
 <div>questo è il div numero 14</div>
 <div>questo è il div numero 15</div>
-<div class="footer">questo è la fine della pagina</div>
+<div class="footer">questa è la fine della pagina</div>
 </body>
 </html>
