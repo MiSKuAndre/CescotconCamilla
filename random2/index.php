@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link href="style.css">
+        <link rel="stylesheet" href="style.css">
 
     <h1>Contenuti a caso!</h1>
 
