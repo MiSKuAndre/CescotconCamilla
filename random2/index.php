@@ -5,7 +5,7 @@
     <h1>Contenuti a caso!</h1>
 
     </head>
-
+<body>
 
 <?php
     // Numero casuale tra 10 e 30
@@ -20,4 +20,5 @@
     }
     
 ?>
-
+<div class="footer">fine pagina</div>
+</body>
