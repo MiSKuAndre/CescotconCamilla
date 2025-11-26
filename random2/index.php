@@ -5,7 +5,7 @@
     <h1>Contenuti a caso!</h1>
 
     </head>
-
+<body>
 
 <?php
     // Numero casuale tra 10 e 30
@@ -14,10 +14,11 @@
 
     // Ciclo per creare i div da 1 a $numero
 
-    for($i = 1; $i <= $numero; $i++){
-        echo "<div>Io sono dispari</div>";
-        echo "<div>Io sono pari</div>";
+    for($i = 1; $i <= $numero; $i++) {
+        echo "<div class='dispari'>Io sono dispari</div>";
+        echo "<div class='pari'>Io sono pari</div>";
     }
     
 ?>
-
+<div class="footer">fine pagina</div>
+</body>
