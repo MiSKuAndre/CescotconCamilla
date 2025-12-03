@@ -1,7 +1,10 @@
-document.addEventListener('DOMContentLoaded', manage_events);
 
-var clickMeButton = document.getElementById("click-me-button");
-clickMeButton.addEventListener('onclick', function() {
 
-})
+var clickMeButton = document.getElementById("Colora");
+clickMeButton.addEventListener('click', function() {
+    var cambioColore = document.getElementsByClassName("div");
+    for (var i = 0; i < cambioColore.length; i++) {
+        cambioColore[i].style.backgroundColor = "red";
+    }
+});
  

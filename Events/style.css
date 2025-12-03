@@ -4,5 +4,7 @@ h1 {
 
 div {
     background-color: yellow;
-    margin: 100px;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
 }
