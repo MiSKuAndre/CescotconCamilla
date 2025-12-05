@@ -25,6 +25,35 @@ clickMeButton.addEventListener('click', function() {
 }); 
 
 
+
+
+var clickMeButton = document.getElementById("Alterna");
+clickMeButton.addEventListener('click', function() {
+    var cambioColore = document.getElementsByClassName("Red");
+    for (var i = 0; i < cambioColore.length; i++) {
+        cambioColore[i].style.backgroundColor = "red";
+    }
+}); 
+var clickMeButton = document.getElementById("Alterna");
+clickMeButton.addEventListener('click', function() {
+    var cambioColore = document.getElementsByClassName("Yellow");
+    for (var i = 0; i < cambioColore.length; i++) {
+        cambioColore[i].style.backgroundColor = "yellow";
+    }
+}); 
+var clickMeButton = document.getElementById("Alterna");
+clickMeButton.addEventListener('click', function() {
+    var cambioColore = document.getElementsByClassName("Blue");
+    for (var i = 0; i < cambioColore.length; i++) {
+        cambioColore[i].style.backgroundColor = "blue";
+    }
+}); 
+
+
+
+
+
+
  /* Funzione per cambiare colore al click del bottone 
  
  function cambiaColore(buttonId, ClassName, color) {
