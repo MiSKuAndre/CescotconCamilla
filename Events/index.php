@@ -20,6 +20,7 @@ function printDiv($text, $class) {
     <button id="Rosso">Rosso</button>
     <button id="Giallo">Giallo</button>
     <button id="Blu">Blu</button>
+    <button id="Alterna">Alterna</button>
 
     
 <?php
