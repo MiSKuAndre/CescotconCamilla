@@ -25,6 +25,8 @@ clickMeButton.addEventListener('click', function() {
 }); 
 
 
+
+
  /* Funzione per cambiare colore al click del bottone 
  
  function cambiaColore(buttonId, ClassName, color) {
