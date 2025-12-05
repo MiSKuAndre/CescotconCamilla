@@ -22,5 +22,22 @@ clickMeButton.addEventListener('click', function() {
     for (var i = 0; i < cambioColore.length; i++) {
         cambioColore[i].style.backgroundColor = "blue";
     }
-});
+}); 
+
+
+ /* Funzione per cambiare colore al click del bottone 
  
+ function cambiaColore(buttonId, ClassName, color) {
+    var clickMeButton = document.getElementById(buttonId);
+    clickMeButton.addEventListener('click', function() {
+        let elements = document.getElementsByClassName(ClassName);  
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style.backgroundColor = color;
+        }
+    });
+    }
+
+cambiaColore("Rosso", "div", "red");
+cambiaColore("Giallo", "div", "yellow");
+cambiaColore("Blu", "div", "blue"); 
+*/
