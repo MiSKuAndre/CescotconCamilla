@@ -17,7 +17,7 @@ function printDiv($text, $class) {
 </head>
 <body>  
     <h1>Eventi JavaScript</h1>
-    <button id="">Rosso</button>
+    <button id="Rosso">Rosso</button>
     <button id="Giallo">Giallo</button>
     <button id="Blu">Blu</button>
 
