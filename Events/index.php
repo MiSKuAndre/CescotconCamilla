@@ -17,8 +17,11 @@ function printDiv($text, $class) {
 </head>
 <body>  
     <h1>Eventi JavaScript</h1>
-    <button id="Colora">Colora</button>
+    <button id="Colora">Rosso</button>
+    <button id="Giallo">Giallo</button>
+    <button id="Blu">Blu</button>
 
+    
 <?php
     $numerodiv = 20;
     for ($i = 1; $i <= $numerodiv; $i++) {
