@@ -84,4 +84,4 @@ clickMeButton.addEventListener('click', function() {
         divs[i].style.backgroundColor = "blue";
     }
 }});
-/*
+*/
