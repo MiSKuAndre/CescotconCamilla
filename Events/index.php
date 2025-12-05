@@ -24,9 +24,11 @@ function printDiv($text, $class) {
 
     
 <?php
-    $numerodiv = 20;
+    $numerodiv = 6;
     for ($i = 1; $i <= $numerodiv; $i++) {
-        printDiv(" ". $i, "div");
+        printDiv(" ". $i, "div Red" );
+        printDiv(" ". $i, "div Yellow");
+        printDiv(" ". $i, "div Blue");
     }
 
 ?>
