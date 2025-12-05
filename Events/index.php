@@ -22,7 +22,7 @@ function printDiv($text, $class) {
 <?php
     $numerodiv = 20;
     for ($i = 1; $i <= $numerodiv; $i++) {
-        printDiv("Div numero ". $i, "div");
+        printDiv(" ". $i, "div");
     }
 
 ?>
