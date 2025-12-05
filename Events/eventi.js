@@ -75,13 +75,13 @@ cambiaColore("Blu", "div", "blue");
 var clickMeButton = document.getElementById("Alterna");
 clickMeButton.addEventListener('click', function() {
     var divs = document.getElementsByClassName("div");
-         for (i = 0; i < divs.length; i++) {
-     if (i % 3 == 0) {
-        divs[i].style.backgroundColor = "red";
+    for (var i = 0; i < divs.length; i++) {
+         if (i % 3 == 0) {
+            divs[i].style.backgroundColor = "red";
     } else if (i % 3 == 1) {
-        divs[i].style.backgroundColor = "yellow";
+            divs[i].style.backgroundColor = "yellow";
     } else {
-        divs[i].style.backgroundColor = "blue";
+            divs[i].style.backgroundColor = "blue";
     }
 }});
 */
