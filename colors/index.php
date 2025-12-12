@@ -7,11 +7,8 @@
     </head>
     <body>
 <?php
-    $numero = rand(5, 30);
-
-    for($i = 1; $i <= $numero; $i++) {
-        echo "<div class='first'>div casuali</div>";
-    }
+    require_once("../libreria/libreria.php");
+    RandomDivDa5a30();
 ?>
 
     <div class="footer">fine pagina</div>
