@@ -1,3 +1,7 @@
+.display-inline {
+    display: inline-flex;
+}
+
 .gruppouno {
     width: 150px;
     height: 150px;
@@ -9,3 +13,4 @@
     height: 100px;
     margin: 10px;
 }
+
