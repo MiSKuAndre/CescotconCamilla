@@ -19,7 +19,8 @@ require_once("../libreria/libreria.php");
     <button id="Giallo">Giallo</button>
     <button id="Blu">Blu</button>
     <button id="Alterna">Alterna</button>
-
+    <button id="Verde">Verde</button>
+    <button id="Arancione">Arancione</button>
     
 <?php
     $numerodiv = 6;
