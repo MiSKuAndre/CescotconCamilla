@@ -49,8 +49,22 @@ clickMeButton.addEventListener('click', function() {
     }
 }); 
 
+var clickMeButton = document.getElementById("Verde");
+clickMeButton.addEventListener('click', function() {
+    var cambioColore = document.getElementsByClassName("div");
+    for (var i = 0; i < cambioColore.length; i++) {
+        cambioColore[i].style.backgroundColor = "green";
+    }
+}); 
 
 
+var clickMeButton = document.getElementById("Arancione");
+clickMeButton.addEventListener('click', function() {
+    var cambioColore = document.getElementsByClassName("div");
+    for (var i = 0; i < cambioColore.length; i++) {
+        cambioColore[i].style.backgroundColor = "orange";
+    }
+}); 
 
 
 
