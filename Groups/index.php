@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<?php
+    require_once("../libreria/libreria.php");
     
+?>
+
     <button id="Primorosso">Primo rosso</button>
     <button id="Secondorosso">Secondo rosso</button>
     <button id="Tuttirosso">Tutti rosso</button>
@@ -21,20 +26,20 @@
 
 <?php
     // Genera un numero di div casuale tra 5 e 10 di dimensione 150x150 px
-    $numerodiv = rand(5, 10); 
-    for ($i = 1; $i <= $numerodiv; $i++) {
-        printDiv(" ". $i, "Primorosso" );
-        printDiv(" ". $i, "Primoblu" );
-    }
+    RandomDivDa5a10();
 
 ?>
 
 <h2 class="second">Secondo gruppo</h2>
 
+<?php
+    // Genera un numero di div casuale tra 5 e 10 di dimensione 100x100 px
+    RandomDivDa10a15();
+
+?>
 
 
 
-
-<script src="groups.js"></script>
+<script src="gruppi.js"></script>
 
 </body>

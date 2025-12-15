@@ -1,10 +1,10 @@
-h2.first div{
+.gruppouno {
     width: 150px;
     height: 150px;
     margin: 10px;
 }
 
-h2.second div{
+.gruppodue {
     width: 100px;
     height: 100px;
     margin: 10px;

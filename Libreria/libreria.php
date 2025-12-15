@@ -35,7 +35,7 @@ function RandomDivDa10a30() {
 function RandomDivDa5a10() {
     $numero = rand(5, 10);
     for($i = 1; $i <= $numero; $i++) {
-        echo "<div>div casuali</div>";
+        echo "<div class='div primored primoblue gruppouno'>div casuali</div>";
     }
 };
 
@@ -43,7 +43,7 @@ function RandomDivDa5a10() {
 function RandomDivDa10a15() {
     $numero = rand(10, 15);
     for($i = 1; $i <= $numero; $i++) {
-        echo "<div>div casuali</div>";
+        echo "<div class='div secondored secondoblue gruppodue'>div casuali</div>";
     }
 };
 
