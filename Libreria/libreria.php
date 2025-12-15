@@ -31,6 +31,23 @@ function RandomDivDa10a30() {
     }
 };
 
+ // Genera un numero casuale di div (tra 5 e 10) e li stampa
+function RandomDivDa5a10() {
+    $numero = rand(5, 10);
+    for($i = 1; $i <= $numero; $i++) {
+        echo "<div>div casuali</div>";
+    }
+};
+
+ // Genera un numero casuale di div (tra 10 e 15) e li stampa
+function RandomDivDa10a15() {
+    $numero = rand(10, 15);
+    for($i = 1; $i <= $numero; $i++) {
+        echo "<div>div casuali</div>";
+    }
+};
+
+
 
 
 ?>
