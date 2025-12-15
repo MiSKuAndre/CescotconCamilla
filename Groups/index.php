@@ -19,6 +19,16 @@
 
 <h2 class="first">Primo gruppo</h2>
 
+<?php
+    // Genera un numero di div casuale tra 5 e 10 di dimensione 150x150 px
+    $numerodiv = rand(5, 10); 
+    for ($i = 1; $i <= $numerodiv; $i++) {
+        printDiv(" ". $i, "Primorosso" );
+        printDiv(" ". $i, "Primoblu" );
+    }
+
+?>
+
 <h2 class="second">Secondo gruppo</h2>
 
 
