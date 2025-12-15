@@ -1,10 +1,10 @@
-div.first {
+h2.first div{
     width: 150px;
     height: 150px;
     margin: 10px;
 }
 
-div.second {
+h2.second div{
     width: 100px;
     height: 100px;
     margin: 10px;
