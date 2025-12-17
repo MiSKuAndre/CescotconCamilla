@@ -45,3 +45,51 @@ clickMeButton.addEventListener('click', function() {
         cambioColore[i].style.backgroundColor = "red";
     }
 });
+
+var clickMeButton = document.getElementById("Terzorosso");
+clickMeButton.addEventListener('click', function() {
+    var cambioColore = document.getElementsByClassName("terzored");
+    for (var i = 0; i < cambioColore.length; i++) {
+        cambioColore[i].style.backgroundColor = "red";
+    }
+});
+
+var clickMeButton = document.getElementById("Terzoblu");
+clickMeButton.addEventListener('click', function() {
+    var cambioColore = document.getElementsByClassName("terzoblue");
+    for (var i = 0; i < cambioColore.length; i++) {
+        cambioColore[i].style.backgroundColor = "blue";
+    }
+});
+
+var clickMeButton = document.getElementById("Primogiallo");
+clickMeButton.addEventListener('click', function() {
+    var cambioColore = document.getElementsByClassName("primoyellow");
+    for (var i = 0; i < cambioColore.length; i++) {
+        cambioColore[i].style.backgroundColor = "yellow";
+    }
+});
+
+var clickMeButton = document.getElementById("Secondogiallo");
+clickMeButton.addEventListener('click', function() {
+    var cambioColore = document.getElementsByClassName("secondoyellow");
+    for (var i = 0; i < cambioColore.length; i++) {
+        cambioColore[i].style.backgroundColor = "yellow";
+    }
+});
+
+var clickMeButton = document.getElementById("Terzogiallo");
+clickMeButton.addEventListener('click', function() {
+    var cambioColore = document.getElementsByClassName("terzoyellow");
+    for (var i = 0; i < cambioColore.length; i++) {
+        cambioColore[i].style.backgroundColor = "yellow";
+    }
+});
+
+var clickMeButton = document.getElementById("Tuttigiallo");
+clickMeButton.addEventListener('click', function() {
+    var cambioColore = document.getElementsByClassName("div");
+    for (var i = 0; i < cambioColore.length; i++) {
+        cambioColore[i].style.backgroundColor = "yellow";
+    }
+});
