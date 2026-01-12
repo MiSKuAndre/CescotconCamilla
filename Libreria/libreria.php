@@ -54,6 +54,34 @@ function RandomDivDa5a20() {
     }
 };
 
+function DivGeneratorClienti() {
+    // Connessione al database
+    $conn = new mysqli("localhost", "root", "", "cescot");
+    // Controllo della connessione
+    if ($conn->connect_error) {
+        die("Connessione fallita: " . $conn->connect_error);
+    }
+    //Inserisci un div per ogni cliente presente nella tabella "clienti" contenente h2 id cliente e p nome e cognome
+    $sql = "SELECT id, nome, cognome FROM clienti";
+    $result = $conn->query($sql);
+
+    // Controllo se ci sono risultati e stampa del testo
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "<div>";
+            echo "<h2>" . $row["id"] . "</h2>";
+            echo "<p>" . $row["nome"] . " " . $row["cognome"] . "</p>";
+            echo "</div>";
+        }
+    } else {
+        echo "Nessun cliente trovato.";
+    }
+
+    // Chiusura della connessione
+    $conn->close();
+}
+    
+
 
 
 
