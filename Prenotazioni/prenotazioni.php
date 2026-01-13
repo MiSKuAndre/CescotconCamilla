@@ -26,12 +26,14 @@
     // Controllo se ci sono risultati e stampa del testo
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
+            echo "<div class='prenotazioni'>";
             echo "<h2>" . $row["arrivo"] . "</h2>";
             echo "<p>Nome: " . $row["nome"] . "</p>";
             echo "<p>Cognome: " . $row["cognome"] . "</p>";
             echo "<p>Importo: " . $row["importo"] . "</p>";
             echo "<p>Caparra: " . $row["caparra"] . "</p>";
-            echo "<p>Saldo: " . $row["saldo"] . "</p><br>";
+            echo "<p class='saldo'>Saldo: " . $row["saldo"] . "</p><br>";
+            echo "</div>";
         }
     } else {
         echo "Nessun dato trovato.";
