@@ -17,7 +17,7 @@
         die("Connessione fallita: " . $conn->connect_error);
     }      
     // Query per ottenere i dati delle prenotazioni con join tra le tabelle citta, clienti e prenotazioni   
-    $sql = "SELECT prenotazioni.arrivo, clienti.nome, clienti.cognome, prenotazioni.importo, prenotazioni.caparra, prenotazioni.importo - prenotazioni.caparra AS saldo
+    $sql = "SELECT prenotazioni.arrivo, clienti.nome, clienti.cognome, citta.citta, prenotazioni.importo, prenotazioni.caparra, prenotazioni.importo - prenotazioni.caparra AS saldo
             FROM citta
             INNER JOIN clienti ON citta.id_citta = clienti.citta
             INNER JOIN prenotazioni ON clienti.id_cliente = prenotazioni.cliente";
@@ -30,6 +30,7 @@
             echo "<h2>" . $row["arrivo"] . "</h2>";
             echo "<p>Nome: " . $row["nome"] . "</p>";
             echo "<p>Cognome: " . $row["cognome"] . "</p>";
+            echo "<p>Città: " . $row["citta"] . "</p>";
             echo "<p>Importo: " . $row["importo"] . "</p>";
             echo "<p>Caparra: " . $row["caparra"] . "</p>";
             echo "<p class='saldo'>Saldo: " . $row["saldo"] . "</p><br>";
