@@ -15,14 +15,22 @@
     if ($conn->connect_error) {
         die("Connessione fallita: " . $conn->connect_error);
     }      
-    // Inserisci testo letto dal campo "value" della tabella "content" del database "prenotazioni"     
-    $sql = "SELECT value FROM content";
+    // Query per ottenere i dati delle prenotazioni con join tra le tabelle citta, clienti e prenotazioni   
+    $sql = "SELECT prenotazioni.arrivo, clienti.nome, clienti.cognome, prenotazioni.importo, prenotazioni.caparra, prenotazioni.importo - prenotazioni.caparra AS saldo
+            FROM citta
+            INNER JOIN clienti ON citta.id_citta = clienti.citta
+            INNER JOIN prenotazioni ON clienti.id_cliente = prenotazioni.cliente";
     $result = $conn->query($sql);
 
     // Controllo se ci sono risultati e stampa del testo
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            echo "<p>" . $row["value"] . "</p>";
+            echo "<h2>" . $row["arrivo"] . "</h2>";
+            echo "<p>Nome: " . $row["nome"] . "</p>";
+            echo "<p>Cognome: " . $row["cognome"] . "</p>";
+            echo "<p>Importo: " . $row["importo"] . "</p>";
+            echo "<p>Caparra: " . $row["caparra"] . "</p>";
+            echo "<p>Saldo: " . $row["saldo"] . "</p><br>";
         }
     } else {
         echo "Nessun dato trovato.";
