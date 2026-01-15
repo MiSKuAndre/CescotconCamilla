@@ -17,23 +17,21 @@
         die("Connessione fallita: " . $conn->connect_error);
     }      
     // Query per ottenere i dati delle prenotazioni con join tra le tabelle citta, clienti e prenotazioni   
-    $sql = "SELECT prenotazioni.arrivo, clienti.nome, clienti.cognome, citta.citta, prenotazioni.importo, prenotazioni.caparra, ROUND(prenotazioni.importo - prenotazioni.caparra, 2) AS saldo
-            FROM citta
-            INNER JOIN clienti ON citta.id_citta = clienti.citta
-            INNER JOIN prenotazioni ON clienti.id_cliente = prenotazioni.cliente";
+    $sql = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta
+            FROM regioni
+            INNER JOIN citta ON regioni.id_regione = citta.regione
+            INNER JOIN clienti ON citta.id_citta = clienti.citta";
     $result = $conn->query($sql);
+
 
     // Controllo se ci sono risultati e stampa del testo
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             echo "<div class='prenotazioni'>";
-            echo "<h2>" . $row["arrivo"] . "</h2>";
-            echo "<p>Nome: " . $row["nome"] . "</p>";
-            echo "<p>Cognome: " . $row["cognome"] . "</p>";
+            echo "<h2>Nome e Cognome: " . $row["nome"] . " ". $row["cognome"] . "</h2>";
+            echo "<p>Regione: " . $row["regione"] . "</p>";
+            echo "<p>Area Geografica: " . $row["area_geografica"] . "</p>";
             echo "<p>Città: " . $row["citta"] . "</p>";
-            echo "<p>Importo: " . $row["importo"] . "</p>";
-            echo "<p>Caparra: " . $row["caparra"] . "</p>";
-            echo "<p class='saldo'>Saldo: " . $row["saldo"] . "</p><br>";
             echo "</div>";
         }
     } else {
