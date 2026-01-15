@@ -28,7 +28,7 @@
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             echo "<div class='prenotazioni'>";
-            echo "<h2>Nome: " . $row["nome"] . " Cognome: " . $row["cognome"] . "</h2>";
+            echo "<h2>Nome e Cognome: " . $row["nome"] . " ". $row["cognome"] . "</h2>";
             echo "<p>Regione: " . $row["regione"] . "</p>";
             echo "<p>Area Geografica: " . $row["area_geografica"] . "</p>";
             echo "<p>Città: " . $row["citta"] . "</p>";
