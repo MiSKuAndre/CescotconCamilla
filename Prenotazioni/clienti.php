@@ -24,6 +24,16 @@
             <option value="Puglia">Puglia</option>
             <option value="Calabria">Calabria</option>
             <option value="Sardegna">Sardegna</option>
+            <option value="Friuli Venezia Giulia">Friuli Venezia Giulia</option>
+            <option value="Liguria">Liguria</option>   
+            <option value="Marche">Marche</option>
+            <option value="Abruzzo">Abruzzo</option>
+            <option value="Umbria">Umbria</option>
+            <option value="Basilicata">Basilicata</option>  
+            <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
+            <option value="Valle d'Aosta">Valle d'Aosta</option>
+            <option value="Molise">Molise</option>
+            <option value="Piemonte">Piemonte</option>
         </select>
     <button type="submit">Cerca</button>
 
@@ -45,7 +55,7 @@
             FROM regioni
             INNER JOIN citta ON regioni.id_regione = citta.regione
             INNER JOIN clienti ON citta.id_citta = clienti.citta";
-            
+
     if (isset($_GET['regione']) && !empty(trim($_GET['regione']))) {
         $regione = $conn->real_escape_string($_GET['regione']);
         $sql = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta
