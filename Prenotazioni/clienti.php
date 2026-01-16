@@ -16,7 +16,7 @@
     if ($conn->connect_error) {
         die("Connessione fallita: " . $conn->connect_error);
     }      
-    // Query per ottenere i dati delle prenotazioni con join tra le tabelle citta, clienti e prenotazioni   
+    // Query per ottenere i dati dei clienti con join tra le tabelle regioni, citta e clienti
     $sql = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta
             FROM regioni
             INNER JOIN citta ON regioni.id_regione = citta.regione
