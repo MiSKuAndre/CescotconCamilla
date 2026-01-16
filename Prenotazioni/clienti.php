@@ -8,6 +8,30 @@
 <body>
     <h1>Clienti</h1>
     <div>
+
+    <form action="clienti.php" id="form" method="GET">
+
+<label for="regione">Filtra per Regione:</label>
+    <select name="regione" id="regione">
+            <option value="">Seleziona Regione</option>
+            <option value="Lombardia">Lombardia</option>
+            <option value="Lazio">Lazio</option>
+            <option value="Campania">Campania</option>
+            <option value="Sicilia">Sicilia</option>
+            <option value="Veneto">Veneto</option>
+            <option value="Toscana">Toscana</option>
+            <option value="Emilia-Romagna">Emilia-Romagna</option>
+            <option value="Puglia">Puglia</option>
+            <option value="Calabria">Calabria</option>
+            <option value="Sardegna">Sardegna</option>
+        </select>
+    <button type="submit">Cerca</button>
+
+ 
+    </form>
+
+
+
     <?php
 
     // Connessione al database
@@ -21,6 +45,15 @@
             FROM regioni
             INNER JOIN citta ON regioni.id_regione = citta.regione
             INNER JOIN clienti ON citta.id_citta = clienti.citta";
+            
+    if (isset($_GET['regione']) && !empty(trim($_GET['regione']))) {
+        $regione = $conn->real_escape_string($_GET['regione']);
+        $sql = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta
+                FROM regioni
+                INNER JOIN citta ON regioni.id_regione = citta.regione
+                INNER JOIN clienti ON citta.id_citta = clienti.citta
+                WHERE regioni.regione = '$regione'";
+    }
     $result = $conn->query($sql);
 
 

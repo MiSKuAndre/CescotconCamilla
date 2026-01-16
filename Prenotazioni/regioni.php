@@ -32,8 +32,8 @@
             FROM regioni
             INNER JOIN citta ON regioni.id_regione = citta.regione
             INNER JOIN clienti ON citta.id_citta = clienti.citta
-            INNER JOIN prenotazioni ON clienti.id_cliente = prenotazioni.cliente
-            ";
+            INNER JOIN prenotazioni ON clienti.id_cliente = prenotazioni.cliente";
+            
             if ($regione != "" or $regione != null) {
     $sql .= " WHERE regioni.regione LIKE '%$regione%'";
     }
