@@ -24,7 +24,7 @@
             <option value="Puglia">Puglia</option>
             <option value="Calabria">Calabria</option>
             <option value="Sardegna">Sardegna</option>
-            <option value="Friuli Venezia Giulia">Friuli Venezia Giulia</option>
+            <option value="Friuli-Venezia Giulia">Friuli-Venezia Giulia</option>
             <option value="Liguria">Liguria</option>   
             <option value="Marche">Marche</option>
             <option value="Abruzzo">Abruzzo</option>
