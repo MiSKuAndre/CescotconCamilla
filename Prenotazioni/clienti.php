@@ -51,7 +51,7 @@
         die("Connessione fallita: " . $conn->connect_error);
     }      
     // Query per ottenere i dati dei clienti con join tra le tabelle regioni, citta e clienti
-    $sql = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta
+    $sql = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta 
             FROM regioni
             INNER JOIN citta ON regioni.id_regione = citta.regione
             INNER JOIN clienti ON citta.id_citta = clienti.citta";
@@ -64,7 +64,53 @@
                 INNER JOIN clienti ON citta.id_citta = clienti.citta
                 WHERE regioni.regione = '$regione'";
     }
+
+    $sql_count = "SELECT COUNT(*) as total
+                FROM regioni
+                INNER JOIN citta ON regioni.id_regione = citta.regione
+                INNER JOIN clienti ON citta.id_citta = clienti.citta";
+    if (isset($_GET['regione']) && !empty(trim($_GET['regione']))) {
+        $regione = $conn->real_escape_string($_GET['regione']);
+        $sql_count = "SELECT COUNT(*) as total
+                FROM regioni
+                INNER JOIN citta ON regioni.id_regione = citta.regione
+                INNER JOIN clienti ON citta.id_citta = clienti.citta
+                WHERE regioni.regione = '$regione'";
+
+    }
+    $result_count = $conn->query($sql_count);
+    $row_count = $result_count->fetch_assoc();
+    echo "<p>Totale clienti trovati: " . $row_count['total'] . "</p>";
+   
+
+// limite e offset per la paginazione a 50 record
+    $limit = 50; // record per pagina
+
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    if ($page < 1) $page = 1;
+
+    $offset = ($page - 1) * $limit;
+    $sql .= " LIMIT $limit OFFSET $offset";
+    $result_count = $conn->query($sql_count);
+    $row_count = $result_count->fetch_assoc();
+    $total_pages = ceil($row_count['total'] / $limit);
+
     $result = $conn->query($sql);
+
+    // Navigazione paginazione
+    echo "<div class='pagination'>";
+    if ($page > 1) {
+
+    echo '<a href="?page=' . ($page - 1) . '">← Indietro</a> ';
+    }
+
+    echo " Pagina $page di $total_pages ";
+
+    if ($page < $total_pages) {
+    echo '<a href="?page=' . ($page + 1) . '">Avanti →</a>';
+    }
+
+    echo "</div>";
 
 
     // Controllo se ci sono risultati e stampa del testo
@@ -80,6 +126,8 @@
     } else {
         echo "Nessun dato trovato.";
     }
+
+
 
     // Chiusura della connessione
     $conn->close();
