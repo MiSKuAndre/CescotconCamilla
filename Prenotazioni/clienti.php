@@ -54,7 +54,6 @@
     if ($conn->connect_error) {
         die("Connessione fallita: " . $conn->connect_error);
     }      
-    // Query per ottenere i dati dei clienti con join tra le tabelle regioni, citta e clienti in base ai bottoni avanti e indietro
     $sql = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta
         FROM regioni
         INNER JOIN citta ON regioni.id_regione = citta.regione
