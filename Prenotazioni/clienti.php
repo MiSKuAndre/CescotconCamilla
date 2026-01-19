@@ -36,11 +36,15 @@
             <option value="Piemonte">Piemonte</option>
         </select>
     <button type="submit">Cerca</button>
-
- 
+    <?php 
+    // inserire due bottoni "avanti" e "indietro" per navigare tra le pagine dei risultati, mostrando 50 record per pagina
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $limit = 50;
+    $offset = ($page - 1) * $limit;
+    ?>
+    <button type="submit" name="page" value="<?php echo max(1, $page - 1); ?>">Indietro</button>
+    <button type="submit" name="page" value="<?php echo $page + 1; ?>">Avanti</button>
     </form>
-
-
 
     <?php
 
@@ -50,33 +54,14 @@
     if ($conn->connect_error) {
         die("Connessione fallita: " . $conn->connect_error);
     }      
-    // Query per ottenere i dati dei clienti con join tra le tabelle regioni, citta e clienti
-    $sql = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta 
-            FROM regioni
-            INNER JOIN citta ON regioni.id_regione = citta.regione
-            INNER JOIN clienti ON citta.id_citta = clienti.citta";
+    $sql = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta
+        FROM regioni
+        INNER JOIN citta ON regioni.id_regione = citta.regione
+        INNER JOIN clienti ON citta.id_citta = clienti.citta";
 
-    if (isset($_GET['regione']) && !empty(trim($_GET['regione']))) {
+    if (!empty($_GET['regione'])) {
         $regione = $conn->real_escape_string($_GET['regione']);
-        $sql = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta
-                FROM regioni
-                INNER JOIN citta ON regioni.id_regione = citta.regione
-                INNER JOIN clienti ON citta.id_citta = clienti.citta
-                WHERE regioni.regione = '$regione'";
-    }
-
-    $sql_count = "SELECT COUNT(*) as total
-                FROM regioni
-                INNER JOIN citta ON regioni.id_regione = citta.regione
-                INNER JOIN clienti ON citta.id_citta = clienti.citta";
-    if (isset($_GET['regione']) && !empty(trim($_GET['regione']))) {
-        $regione = $conn->real_escape_string($_GET['regione']);
-        $sql_count = "SELECT COUNT(*) as total
-                FROM regioni
-                INNER JOIN citta ON regioni.id_regione = citta.regione
-                INNER JOIN clienti ON citta.id_citta = clienti.citta
-                WHERE regioni.regione = '$regione'";
-
+        $sql = $sql . " WHERE regioni.regione = '$regione'";
     }
     $result_count = $conn->query($sql_count);
     $row_count = $result_count->fetch_assoc();
@@ -91,9 +76,6 @@
     $offset = ($page - 1) * $limit;
     
     $sql .= " LIMIT $limit OFFSET $offset";
-    $result_count = $conn->query($sql_count);
-    $row_count = $result_count->fetch_assoc();
-    $total_pages = ceil($row_count['total'] / $limit);
 
     $result = $conn->query($sql);
 
@@ -116,6 +98,7 @@
 
 
     // Controllo se ci sono risultati e stampa del testo
+    
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             echo "<div class='prenotazioni'>";
@@ -128,8 +111,6 @@
     } else {
         echo "Nessun dato trovato.";
     }
-
-
 
     // Chiusura della connessione
     $conn->close();
