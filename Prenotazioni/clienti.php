@@ -36,14 +36,8 @@
             <option value="Piemonte">Piemonte</option>
         </select>
     <button type="submit">Cerca</button>
-    <?php 
-    // inserire due bottoni "avanti" e "indietro" per navigare tra le pagine dei risultati, mostrando 50 record per pagina
-    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    $limit = 50;
-    $offset = ($page - 1) * $limit;
-    ?>
-    <button type="submit" name="page" value="<?php echo max(1, $page - 1); ?>">Indietro</button>
-    <button type="submit" name="page" value="<?php echo $page + 1; ?>">Avanti</button>
+    
+    
     </form>
 
     <?php
@@ -63,6 +57,15 @@
         $regione = $conn->real_escape_string($_GET['regione']);
         $sql = $sql . " WHERE regioni.regione = '$regione'";
     }
+    // Calcolo del totale dei record per la paginazione
+    $sql_count = "SELECT COUNT(*) as total
+        FROM regioni
+        INNER JOIN citta ON regioni.id_regione = citta.regione
+        INNER JOIN clienti ON citta.id_citta = clienti.citta";
+    if (!empty($_GET['regione'])) {
+        $regione = $conn->real_escape_string($_GET['regione']);
+        $sql_count = $sql_count . " WHERE regioni.regione = '$regione'";
+    }
     $result_count = $conn->query($sql_count);
     $row_count = $result_count->fetch_assoc();
     echo "<p>Totale clienti trovati: " . $row_count['total'] . "</p>";
@@ -76,6 +79,7 @@
     $offset = ($page - 1) * $limit;
     
     $sql .= " LIMIT $limit OFFSET $offset";
+    $total_pages = ceil($row_count['total'] / $limit);
 
     $result = $conn->query($sql);
 
