@@ -88,8 +88,8 @@
 
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     if ($page < 1) $page = 1;
-
     $offset = ($page - 1) * $limit;
+    
     $sql .= " LIMIT $limit OFFSET $offset";
     $result_count = $conn->query($sql_count);
     $row_count = $result_count->fetch_assoc();
@@ -98,7 +98,9 @@
     $result = $conn->query($sql);
 
     // Navigazione paginazione
+
     echo "<div class='pagination'>";
+
     if ($page > 1) {
 
     echo '<a href="?page=' . ($page - 1) . '">← Indietro</a> ';
