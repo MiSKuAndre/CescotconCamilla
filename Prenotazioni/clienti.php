@@ -86,16 +86,21 @@
     // Navigazione paginazione
 
     echo "<div class='pagination'>";
+    if(isset($_GET['regione'] ) && !empty($_GET['regione'])) {
+        $regione_param = '&regione=' . urlencode($_GET['regione']);
+    } else {
+        $regione_param = '';
+    }
 
     if ($page > 1) {
 
-    echo '<a href="?page=' . ($page - 1) . '">← Indietro</a> ';
+    echo '<a href="?page=' . ($page - 1) . $regione_param . '">← Indietro</a> ';
     }
 
     echo " Pagina $page di $total_pages ";
 
     if ($page < $total_pages) {
-    echo '<a href="?page=' . ($page + 1) . '">Avanti →</a>';
+    echo '<a href="?page=' . ($page + 1) . $regione_param . '">Avanti →</a>';
     }
 
     echo "</div>";
