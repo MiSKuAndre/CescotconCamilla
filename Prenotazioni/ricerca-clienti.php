@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <form method="GET">
+    <input type="text" name="cliente" placeholder="Inserisci cliente">
+
+<label for="regione">Filtra per Regione:</label>
+    <select name="regione" id="regione">
+            <option value="">Seleziona Regione</option>
+            <option value="Lombardia">Lombardia</option>
+            <option value="Lazio">Lazio</option>
+            <option value="Campania">Campania</option>
+            <option value="Sicilia">Sicilia</option>
+            <option value="Veneto">Veneto</option>
+            <option value="Toscana">Toscana</option>
+            <option value="Emilia-Romagna">Emilia-Romagna</option>
+            <option value="Puglia">Puglia</option>
+            <option value="Calabria">Calabria</option>
+            <option value="Sardegna">Sardegna</option>
+            <option value="Friuli-Venezia Giulia">Friuli-Venezia Giulia</option>
+            <option value="Liguria">Liguria</option>   
+            <option value="Marche">Marche</option>
+            <option value="Abruzzo">Abruzzo</option>
+            <option value="Umbria">Umbria</option>
+            <option value="Basilicata">Basilicata</option>  
+            <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
+            <option value="Valle d'Aosta">Valle d'Aosta</option>
+            <option value="Molise">Molise</option>
+            <option value="Piemonte">Piemonte</option>
+        </select>
+    <button type="submit">Cerca</button>
+    
+    
+    </form>
+
+    <?php
+
+    // Connessione al database
+    $conn = new mysqli("localhost", "root", "", "prenotazioni");
+    // Controllo della connessione
+    if ($conn->connect_error) {
+        die("Connessione fallita: " . $conn->connect_error);
+    }      
+
+    $sql = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta
+        FROM regioni
+        INNER JOIN citta ON regioni.id_regione = citta.regione
+        INNER JOIN clienti ON citta.id_citta = clienti.citta";
+
+    if (!empty($_GET['cliente'])) {
+        $cliente = $conn->real_escape_string($_GET['cliente']);
+        $sql = $sql . " WHERE (clienti.nome LIKE '%$cliente%' OR clienti.cognome LIKE '%$cliente%')";
+    } else {
+        echo "Nessun testo inserito.";
+    }
+
+    if (!empty($_GET['regione'])) {
+        $regione = $conn->real_escape_string($_GET['regione']);
+        $sql = $sql . " AND regioni.regione = '$regione'";
+    } else {
+        echo "Nessuna regione selezionata.";
+    }
+    $result = $conn->query($sql);
+    // Controllo se ci sono risultati e stampa del testo
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "<div class='prenotazioni'>";
+            echo "<h2>" . $row["nome"] . " " . $row["cognome"] . "</h2>";
+            echo "<p>Città: " . $row["citta"] . "</p>";
+            echo "<p>Regione: " . $row["regione"] . "</p>";
+            echo "<p>Area geografica: " . $row["area_geografica"] . "</p><br>";
+            echo "</div>";
+        }
+    } else {
+        echo "Nessun dato trovato.";
+    }
+
+    // Chiusura della connessione
+    $conn->close();
+    ?>
+
+
+
+    </div>
